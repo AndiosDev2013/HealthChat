@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+    <head>
+        <title>HealthChat REST API Documentation</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="theme/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="theme/bootstrap/css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="theme/bootstrap/css/bootstrap-overrides.css" />
+        <link rel="stylesheet" href="theme/font-awesome/css/font-awesome.min.css" />
+        <!--[if IE 7]>
+          <link rel="stylesheet" href="theme/font-awesome/css/font-awesome-ie7.min.css">
+        <![endif]-->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="theme/default/css/api.css" />
+    </head>
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="">HealthChat REST API Documentation</a>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar">
+            <ul>
+                <li class="has-sub">
+                    <a href="#member">
+                        <i class="icon-book"></i>
+                        <span class="title">Member API</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub">
+                        <li class=""><a href="#member_checknameemail">Check Name or Email</a></li>
+                        <li class=""><a href="#member_checkname">Check Name</a></li>
+                        <li class=""><a href="#member_checkemail">Check E-mail</a></li>
+                        <li class=""><a href="#member_signup">Member Sign Up</a></li>
+                        <li class=""><a href="#member_login">Member Login</a></li>
+                        <li class=""><a href="#member_locate">Member Locate</a></li>
+                        <li class=""><a href="#member_online">Member Online</a></li>
+                        <li class=""><a href="#member_recoverpassword">Password Recovery</a></li>
+                        <li class=""><a href="#member_search">Member Search</a></li>
+                        <li class=""><a href="#member_get">Member Info</a></li>
+                        <li class=""><a href="#member_profile">Member Profile</a></li>
+                        <li class=""><a href="#member_updateprofile">Member Profile Update</a></li>
+                        <li class=""><a href="#member_updateavatar">Member Avatar Update</a></li>
+                        <li class=""><a href="#member_like">Member Like</a></li>
+                        <li class=""><a href="#member_unlike">Member Unlike</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="#topic">
+                        <i class="icon-book"></i>
+                        <span class="title">Topic API</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub">
+                        <li class=""><a href="#topic_register">Topic Registration</a></li>
+                        <li class=""><a href="#topic_search">Topic Search</a></li>
+                        <li class=""><a href="#topic_like">Topic Like</a></li>
+                        <li class=""><a href="#topic_unlike">Topic Unlike</a></li>
+                        <li class=""><a href="#topic_flag">Topic Flag</a></li>
+                        <li class=""><a href="#topic_unflag">Topic Unflag</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="#post">
+                        <i class="icon-book"></i>
+                        <span class="title">Post API</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub">
+                        <li class=""><a href="#post_register">Post Registration</a></li>
+                        <li class=""><a href="#post_search">Post Search</a></li>
+                        <li class=""><a href="#post_get">Post Get <span class="label label-info">new</span></a></li>
+                        <li class=""><a href="#post_update">Post Update <span class="label label-info">new</span></a></li>
+                        <li class=""><a href="#post_delete">Post Delete <span class="label label-info">new</span></a></li>
+                        <li class=""><a href="#post_like">Post Like</a></li>
+                        <li class=""><a href="#post_unlike">Post Unlike</a></li>
+                        <li class=""><a href="#post_likelist">Post Like List</a></li>
+                        <li class=""><a href="#post_flag">Post Flag</a></li>
+                        <li class=""><a href="#post_unflag">Post Unflag</a></li>
+                        <li class=""><a href="#post_share">Post Share</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="#comment">
+                        <i class="icon-book"></i>
+                        <span class="title">Comment API</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub">
+                        <li class=""><a href="#comment_register">Comment Registration</a></li>
+                        <li class=""><a href="#comment_search">Comment Search</a></li>
+                        <li class=""><a href="#comment_update">Comment Update <span class="label label-info">new</span></a></li>
+                        <li class=""><a href="#comment_delete">Comment Delete <span class="label label-info">new</span></a></li>
+                        <li class=""><a href="#comment_like">Comment Like</a></li>
+                        <li class=""><a href="#comment_unlike">Comment Unlike</a></li>
+                        <li class=""><a href="#comment_flag">Comment Flag</a></li>
+                        <li class=""><a href="#comment_unflag">Comment Unflag</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="#message">
+                        <i class="icon-book"></i>
+                        <span class="title">Message API</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub">
+                        <li class=""><a href="#message_send">Message Send</a></li>
+                        <li class=""><a href="#message_search">Message Search</a></li>
+                        <li class=""><a href="#message_connected">Message Connected</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <a name="member"></a>
+                <div class="api-group">
+                    <h1><i class="icon-book"></i>Member API</h1>
+                    <a name="member_checknameemail"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Check Name or Email</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/member/check_name_or_email</span></p>
+                        <form method="get" action="api/member/check_name_or_email" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">Name </label>
+                                <div class="controls">
+                                    <input type="text" name="name" required="" value="testa" /><span class="param-name">name</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Check Name or Email</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_checkname"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Check Name</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/member/check_name</span></p>
+                        <form method="get" action="api/member/check_name" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">Name </label>
+                                <div class="controls">
+                                    <input type="text" name="name" required="" value="testa" /><span class="param-name">name</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Check Name</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_checkemail"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Check E-mail</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/member/check_email</span></p>
+                        <form method="get" action="api/member/check_email" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">E-mail </label>
+                                <div class="controls">
+                                    <input type="text" name="email" required="" value="testa@gmail.com" /><span class="param-name">email</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Check Email</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_signup"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Sign Up</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/member/signup</span></p>
+                        <form method="POST" action="api/member/signup" class="form-horizontal" onsubmit="pwd_digest(this);">
+                            <div class="control-group">
+                                <label class="control-label">Name</label>
+                                <div class="controls">
+                                    <input type="text" name="name" required="" value="testa" /><span class="param-name">name</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">E-mail</label>
+                                <div class="controls">
+                                    <input type="text" name="email" value="testa@gmail.com" /><span class="param-name">email</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Full Name</label>
+                                <div class="controls">
+                                    <input type="text" name="full_name" required="" value="Test Team" /><span class="param-name">full_name</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Gender</label>
+                                <div class="controls">
+                                    <select name="gender">
+                                        <option value="0">Male</option>
+                                        <option value="1">Female</option>
+                                    </select>
+                                    <span class="param-name">gender (0: Male, 1: Female)</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Password</label>
+                                <div class="controls">
+                                    <input type="text" name="password" required="" value="testa@123" /><span class="param-name">password</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Birthday</label>
+                                <div class="controls">
+                                    <input type="text" name="birthday" value="2014-01-01" /><span class="param-name">birthday</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Address</label>
+                                <div class="controls">
+                                    <input type="text" name="address" value="Dandong" /><span class="param-name">address</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">About</label>
+                                <div class="controls">
+                                    <input type="text" name="about" value="About me" /><span class="param-name">about</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Social Picture URL</label>
+                                <div class="controls">
+                                    <input type="text" name="social_picture_url" value="Social Picture URL" /><span class="param-name">social_picture_url</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Device Token</label>
+                                <div class="controls">
+                                    <input type="text" name="device_token" value="3234sdf324f23ddf323se" /><span class="param-name">device_token</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_login"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Login</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/member/login</span></p>
+                        <form method="POST" action="api/member/login" class="form-horizontal" onsubmit="pwd_digest(this);">
+                            <div class="control-group">
+                                <label class="control-label">E-mail</label>
+                                <div class="controls">
+                                    <input type="text" name="email" required="" value="testa@gmail.com" /><span class="param-name">email</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Password</label>
+                                <div class="controls">
+                                    <input type="text" name="password" required="" value="testa@123" /><span class="param-name">password</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Device Token</label>
+                                <div class="controls">
+                                    <input type="text" name="device_token" value="3234sdf324f23ddf323se" /><span class="param-name">device_token</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_locate"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Locate</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/member/locate</span></p>
+                        <form method="POST" action="api/member/locate" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Longitude</label>
+                                <div class="controls">
+                                    <input type="text" name="longitude" required="" value="1" /><span class="param-name">longitude</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Latitude</label>
+                                <div class="controls">
+                                    <input type="text" name="latitude" required="" value="1" /><span class="param-name">latitude</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Locate</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_online"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Online</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/member/online</span></p>
+                        <form method="POST" action="api/member/online" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Set Online</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_recoverpassword"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Password Recovery</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/member/recover_password</span></p>
+                        <form method="POST" action="api/member/recover_password" class="form-horizontal" onsubmit="pwd_digest(this);">
+                            <div class="control-group">
+                                <label class="control-label">E-mail</label>
+                                <div class="controls">
+                                    <input type="text" name="email" required="" value="testa@gmail.com" /><span class="param-name">email</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Password</label>
+                                <div class="controls">
+                                    <input type="text" name="password" required="" value="testa@123" /><span class="param-name">password</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Recover</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_search"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Search</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/member/search</span></p>
+                        <form method="GET" action="api/member/search" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Type</label>
+                                <div class="controls">
+                                    <select name="type">
+                                        <option value="0">All</option>
+                                        <option value="1">Suggested</option>
+                                        <option value="2">Popular</option>
+                                        <option value="3">Favorite</option>
+                                    </select><span class="param-name">type</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Limit</label>
+                                <div class="controls">
+                                    <input type="number" min="0" max="500" name="limit" required="" value="0" /><span class="param-name">limit</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Offset</label>
+                                <div class="controls">
+                                    <input type="number" min="0" name="offset" required="" value="0" /><span class="param-name">offset</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_get"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Info</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/member/get</span></p>
+                        <form method="GET" action="api/member/get" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">User Id</label>
+                                <div class="controls">
+                                    <input type="text" name="uid" required="" value="" /><span class="param-name">uid</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">View Member Info</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_profile"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Profile</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/member/profile</span></p>
+                        <form method="GET" action="api/member/profile" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">View Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_updateprofile"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Profile Update</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/member/update_profile</span></p>
+                        <form method="POST" action="api/member/update_profile" class="form-horizontal" onsubmit="pwd_digest(this)">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Name</label>
+                                <div class="controls">
+                                    <input type="text" name="name" required="" value="testa" /><span class="param-name">name</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">E-mail</label>
+                                <div class="controls">
+                                    <input type="text" name="email" value="testa@gmail.com" /><span class="param-name">email</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Full Name</label>
+                                <div class="controls">
+                                    <input type="text" name="full_name" required="" value="Test Team" /><span class="param-name">full_name</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Gender</label>
+                                <div class="controls">
+                                    <select name="gender">
+                                        <option value="0">Male</option>
+                                        <option value="1">Female</option>
+                                    </select>
+                                    <span class="param-name">gender (0: Male, 1: Female)</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Password</label>
+                                <div class="controls">
+                                    <input type="text" name="password" required="" value="testa@123" /><span class="param-name">password</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Birthday</label>
+                                <div class="controls">
+                                    <input type="text" name="birthday" value="2014-01-01" /><span class="param-name">birthday</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Address</label>
+                                <div class="controls">
+                                    <input type="text" name="address" value="Dandong" /><span class="param-name">address</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">About</label>
+                                <div class="controls">
+                                    <input type="text" name="about" value="About me" /><span class="param-name">about</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Health Topics</label>
+                                <div class="controls">
+                                    <input type="text" name="health_topic_array" value="" /><span class="param-name">health_topic_array</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Diagnosed With</label>
+                                <div class="controls">
+                                    <input type="text" name="diagnosed_with_array" value="" /><span class="param-name">diagnosed_with_array</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"></label>
+                                <div class="controls">
+                                    <select name="diagnosed_with_privacy">
+                                        <option value="0">Everyone</option>
+                                        <option value="1">People I like</option>
+                                        <option value="2">Nobody</option>
+                                    </select>
+                                    <span class="param-name">diagnosed_with_privacy</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Medicated</label>
+                                <div class="controls">
+                                    <input type="text" name="medicated_array" value="" /><span class="param-name">medicated_array</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"></label>
+                                <div class="controls">
+                                    <select name="medicated_privacy">
+                                        <option value="0">Everyone</option>
+                                        <option value="1">People I like</option>
+                                        <option value="2">Nobody</option>
+                                    </select>
+                                    <span class="param-name">medicated_privacy</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Update Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_updateavatar"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Avatar Update</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/member/update_avatar</span></p>
+                        <form method="POST" action="api/member/update_avatar" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Picture</label>
+                                <div class="controls">
+                                    <input type="file" name="picture_file" onchange="get_base64(this)" />
+                                    <textarea cols="130" rows="5" name="picture" required="" style="display: block"></textarea>
+                                    <span class="param-name">picture</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Update Avatar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_like"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Like</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/member/like</span></p>
+                        <form method="POST" action="api/member/like" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Member Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="member_id" required="" value="1" /><span class="param-name">member_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Like</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="member_unlike"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Member Unlike</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/member/unlike</span></p>
+                        <form method="POST" action="api/member/unlike" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Like Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="lid" required="" value="1" /><span class="param-name">lid</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Unlike</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a name="topic"></a>
+                <div class="api-group">
+                    <h1><i class="icon-book"></i>Topic API</h1>
+                    <a name="topic_register"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Topic Registration</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/topic/register</span></p>
+                        <form method="POST" action="api/topic/register" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Title</label>
+                                <div class="controls">
+                                    <input type="text" name="title" required="" value="A New Topic" /><span class="param-name">title</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Description</label>
+                                <div class="controls">
+                                    <input type="text" name="desc" required="" value="Description For Topic" /><span class="param-name">desc</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="topic_search"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Topic Search</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/topic/search</span></p>
+                        <form method="GET" action="api/topic/search" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Type</label>
+                                <div class="controls">
+                                    <select name="type">
+                                        <option value="0">All</option>
+                                        <option value="1">Suggested</option>
+                                        <option value="2">Popular</option>
+                                        <option value="3">Favorite</option>
+                                    </select><span class="param-name">type</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Limit</label>
+                                <div class="controls">
+                                    <input type="number" min="0" max="500" name="limit" required="" value="0" /><span class="param-name">limit</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Offset</label>
+                                <div class="controls">
+                                    <input type="number" min="0" name="offset" required="" value="0" /><span class="param-name">offset</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="topic_like"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Topic Like</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/topic/like</span></p>
+                        <form method="POST" action="api/topic/like" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Topic Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="topic_id" required="" value="1" /><span class="param-name">topic_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Like</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="topic_unlike"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Topic Unlike</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/topic/unlike</span></p>
+                        <form method="POST" action="api/topic/unlike" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Like Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="lid" required="" value="1" /><span class="param-name">lid</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Unlike</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="topic_flag"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Topic Flag</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/topic/flag</span></p>
+                        <form method="POST" action="api/topic/flag" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Topic Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="topic_id" required="" value="1" /><span class="param-name">topic_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Flag</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="topic_unflag"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Topic Unflag</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/topic/unflag</span></p>
+                        <form method="POST" action="api/topic/unflag" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Flag Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="fid" required="" value="1" /><span class="param-name">fid</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Unflag</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a name="post"></a>
+                <div class="api-group">
+                    <h1><i class="icon-book"></i>Post API</h1>
+                    <a name="post_register"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Registration</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/post/register</span></p>
+                        <form method="POST" action="api/post/register" class="form-horizontal" onsubmit="convertTitle(this)">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Topic Id</label>
+                                <div class="controls">
+                                    <input type="text" name="topic_id" required="" value="1" /><span class="param-name">topic_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Title</label>
+                                <div class="controls">
+                                    <input type="text" name="title" required="" value="A New Post" /><span class="param-name">title</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Picture</label>
+                                <div class="controls">
+                                    <input type="file" name="picture_file" onchange="get_base64(this)" />
+                                    <textarea cols="130" rows="5" name="picture" style="display: block"></textarea>
+                                    <span class="param-name">picture</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_search"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Search</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/post/search</span></p>
+                        <form method="GET" action="api/post/search" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Topic Id</label>
+                                <div class="controls">
+                                    <input type="text" name="topic_id" required="" value="1" /><span class="param-name">topic_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Limit</label>
+                                <div class="controls">
+                                    <input type="number" min="0" max="500" name="limit" required="" value="0" /><span class="param-name">limit</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Offset</label>
+                                <div class="controls">
+                                    <input type="number" min="0" name="offset" required="" value="0" /><span class="param-name">offset</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_get"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Get <span class="label label-info">new</span></h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/post/get</span></p>
+                        <form method="POST" action="api/post/get" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Post Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="post_id" required="" value="1" /><span class="param-name">post_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Get</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_update"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Update <span class="label label-info">new</span></h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/post/update</span></p>
+                        <form method="POST" action="api/post/update" class="form-horizontal" onsubmit="convertTitle(this)">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Post Id</label>
+                                <div class="controls">
+                                    <input type="text" name="post_id" required="" value="1" /><span class="param-name">post_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Title</label>
+                                <div class="controls">
+                                    <input type="text" name="title" required="" value="A New Post" /><span class="param-name">title</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Picture</label>
+                                <div class="controls">
+                                    <input type="file" name="picture_file" onchange="get_base64(this)" />
+                                    <textarea cols="130" rows="5" name="picture" style="display: block"></textarea>
+                                    <span class="param-name">picture</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_delete"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Delete <span class="label label-info">new</span></h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/post/delete</span></p>
+                        <form method="POST" action="api/post/delete" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Post Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="post_id" required="" value="1" /><span class="param-name">post_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Delete</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_like"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Like</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/post/like</span></p>
+                        <form method="POST" action="api/post/like" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Post Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="post_id" required="" value="1" /><span class="param-name">post_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Like</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_unlike"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Unlike</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/post/unlike</span></p>
+                        <form method="POST" action="api/post/unlike" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Like Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="lid" required="" value="1" /><span class="param-name">lid</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Unlike</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_likelist"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Like List</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/post/likelist</span></p>
+                        <form method="GET" action="api/post/likelist" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Post Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="post_id" required="" value="1" /><span class="param-name">post_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Limit</label>
+                                <div class="controls">
+                                    <input type="number" min="0" max="500" name="limit" required="" value="0" /><span class="param-name">limit</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Offset</label>
+                                <div class="controls">
+                                    <input type="number" min="0" name="offset" required="" value="0" /><span class="param-name">offset</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Get List</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_flag"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Flag</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/post/flag</span></p>
+                        <form method="POST" action="api/post/flag" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Post Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="post_id" required="" value="1" /><span class="param-name">post_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Flag</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_unflag"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Unflag</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/post/unflag</span></p>
+                        <form method="POST" action="api/post/unflag" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Flag Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="fid" required="" value="1" /><span class="param-name">fid</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Unflag</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="post_share"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Post Share</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/post/share</span></p>
+                        <form method="POST" action="api/post/share" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Post Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="post_id" required="" value="1" /><span class="param-name">post_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Shared</label>
+                                <div class="controls">
+                                    <input type="number" min="0" name="shared" required="" value="0" /><span class="param-name">shared</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Share</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a name="comment"></a>
+                <div class="api-group">
+                    <h1><i class="icon-book"></i>Comment API</h1>
+                    <a name="comment_register"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Comment Registration</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/comment/register</span></p>
+                        <form method="POST" action="api/comment/register" class="form-horizontal" onsubmit="convertTitle(this)">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Post Id</label>
+                                <div class="controls">
+                                    <input type="text" name="post_id" required="" value="1" /><span class="param-name">post_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Title</label>
+                                <div class="controls">
+                                    <input type="text" name="title" required="" value="A New Comment" /><span class="param-name">title</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="comment_search"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Comment Search</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/comment/search</span></p>
+                        <form method="GET" action="api/comment/search" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Post Id</label>
+                                <div class="controls">
+                                    <input type="text" name="post_id" required="" value="1" /><span class="param-name">post_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Limit</label>
+                                <div class="controls">
+                                    <input type="number" min="0" max="500" name="limit" required="" value="0" /><span class="param-name">limit</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Offset</label>
+                                <div class="controls">
+                                    <input type="number" min="0" name="offset" required="" value="0" /><span class="param-name">offset</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="comment_update"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Comment Update</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/comment/update</span></p>
+                        <form method="POST" action="api/comment/update" class="form-horizontal" onsubmit="convertTitle(this)">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Comment Id</label>
+                                <div class="controls">
+                                    <input type="text" name="comment_id" required="" value="1" /><span class="param-name">comment_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Title</label>
+                                <div class="controls">
+                                    <input type="text" name="title" required="" value="A New Comment" /><span class="param-name">title</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="comment_delete"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Comment Delete <span class="label label-info">new</span></h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/comment/delete</span></p>
+                        <form method="POST" action="api/comment/delete" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Comment Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="comment_id" required="" value="1" /><span class="param-name">comment_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Delete</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="comment_like"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Comment Like</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/comment/like</span></p>
+                        <form method="POST" action="api/comment/like" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Comment Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="comment_id" required="" value="1" /><span class="param-name">comment_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Like</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="comment_unlike"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Comment Unlike</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/comment/unlike</span></p>
+                        <form method="POST" action="api/comment/unlike" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Like Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="lid" required="" value="1" /><span class="param-name">lid</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Unlike</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="comment_flag"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Comment Flag</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/comment/flag</span></p>
+                        <form method="POST" action="api/comment/flag" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Comment Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="comment_id" required="" value="1" /><span class="param-name">comment_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Flag</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="comment_unflag"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Comment Unflag</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/comment/unflag</span></p>
+                        <form method="POST" action="api/comment/unflag" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Flag Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="fid" required="" value="1" /><span class="param-name">fid</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Unflag</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a name="message"></a>
+                <div class="api-group">
+                    <h1><i class="icon-book"></i>Message API</h1>
+                    <a name="message_send"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Message Send</h2>
+                        <p><span class="label label-info">POST</span><span class="url">/api/message/send</span></p>
+                        <form method="POST" action="api/message/send" class="form-horizontal" onsubmit="convertMessage(this)">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Receiver Id</label>
+                                <div class="controls">
+                                    <input type="text" name="receiver_id" required="" value="1" /><span class="param-name">receiver_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Message</label>
+                                <div class="controls">
+                                    <input type="text" name="message" required="" value="A New Message" /><span class="param-name">message</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="message_search"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Message Search</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/message/search</span></p>
+                        <form method="GET" action="api/message/search" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Receiver Id</label>
+                                <div class="controls">
+                                    <input type="text" name="receiver_id" required="" value="1" /><span class="param-name">receiver_id</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Limit</label>
+                                <div class="controls">
+                                    <input type="number" min="0" max="500" name="limit" required="" value="0" /><span class="param-name">limit</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Offset</label>
+                                <div class="controls">
+                                    <input type="number" min="0" name="offset" required="" value="0" /><span class="param-name">offset</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a name="message_connected"></a>
+                    <div class="api">
+                        <h2><i class="icon-bookmark"></i>Message Connected</h2>
+                        <p><span class="label label-success">GET</span><span class="url">/api/message/connected</span></p>
+                        <form method="GET" action="api/message/connected" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">User Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" required="" value="" /><span class="param-name">token</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Receiver Id</label>
+                                <div class="controls">
+                                    <input type="number" min="1" name="receiver_id" required="" value="1" /><span class="param-name">receiver_id</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit">Check</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            2014
+        </div>
+
+        <script type="text/javascript" src="theme/bootstrap/js/jquery.js"></script>
+        <script type="text/javascript" src="theme/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="theme/default/js/hash.js"></script>
+        <script type="text/javascript" src="theme/default/js/Base64.js"></script>
+        <script type="text/javascript" src="theme/default/js/api.js"></script>
+    </body>
+</html>

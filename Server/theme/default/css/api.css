@@ -1,0 +1,310 @@
+
+body {
+    background-color: #3d3d3d !important;
+}
+.navbar-inverse .dropdown .count {
+    position: absolute;
+    top: 1px;
+    left: 58%;
+    background: rgb(53, 186, 196);
+    padding: 0px 5px;
+    border-radius: 30px;
+    color: #fff;
+    line-height: 16px;
+    z-index: 9999;
+    text-align: center;
+    font-size: 11px;
+}
+
+.navbar-inverse .settings i {
+    font-size: 21px;
+}
+
+.navbar-inverse .notification i {
+    font-size: 17px;
+}
+
+#sidebar {
+    position: absolute;
+    float: left;
+    padding-top: 10px;
+    width: 225px;
+}
+#sidebar ul {
+    width: 225px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    padding: 0;
+}
+#sidebar>ul>li {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.sidebar-toggler {
+    background-image: url(../img/sidebar-toggler.jpg);
+    background-color: #333;
+    cursor: pointer;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    margin-top: 15px;
+    margin-left: 175px;
+    width: 29px;
+    height: 29px;
+    background-repeat: no-repeat;
+}
+#sidebar>ul>li>a {
+    border-top: 1px solid #595959 !important;
+    color: #ccc !important;
+    display: block;
+    position: relative;
+    margin: 0;
+    border: 0;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+}
+#sidebar>ul>li>a:hover {
+    background: #4b4b4b !important;
+    color: #fff !important;
+}
+#sidebar>ul>li.active>a {
+    background: #e02222 !important;
+    border-bottom-color: transparent !important;
+    color: #fff;
+}
+
+#page-sidebar>ul>li.active>a {
+    border: 0;
+    text-shadow: none;
+}
+#sidebar>ul>li>a i {
+}
+#sidebar>ul>li>a:hover i {
+    color: #fff;
+}
+#sidebar>ul>li.active>a i {
+    color: #fff;
+}
+
+#sidebar ul>li>a .arrow:before {
+    float: right;
+    margin-top: 1px;
+    margin-right: 5px;
+    display: inline;
+    font-size: 16px;
+    font-family: FontAwesome;
+    height: auto;
+    content: "\f104";
+    font-weight: 300;
+    text-shadow: none;
+}
+#sidebar>ul>li>a .arrow.open:before {
+    float: right;
+    margin-top: 1px;
+    margin-right: 5px;
+    display: inline;
+    font-family: FontAwesome;
+    height: auto;
+    font-size: 16px;
+    content: "\f107";
+    font-weight: 300;
+    text-shadow: none;
+}
+#sidebar ul>li.active>a .arrow:before, #sidebar>ul>li.active>a .arrow.open:before {
+    color: #fff !important;
+}
+#sidebar ul>li>a .arrow:before, .page-sidebar>ul>li>a .arrow.open:before {
+    color: #919091 !important;
+}
+
+#sidebar>ul>li.active>ul.sub {
+    display: block;
+}
+#sidebar>ul>li>ul.sub {
+    display: none;
+    list-style: none;
+    clear: both;
+    margin: 8px 0 8px 0;
+}
+
+#sidebar>ul>li>ul.sub>li.active>a, #sidebar>ul>li>ul.sub>li>a:hover {
+    color: #fff !important;
+    background: #4b4b4b !important;
+}
+
+#sidebar>ul>li>ul.sub>li>a {
+    display: block;
+    margin: 0;
+    padding: 5px 0;
+    padding-left: 44px !important;
+    color: #ccc;
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 14px;
+    font-weight: 300;
+    background: 0;
+}
+
+.content {
+    min-width: 400px;
+    /*min-height: 550px;*/
+    padding-bottom: 50px;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    margin-left:225px;
+    padding-bottom: 550px;
+}
+
+.footer {
+    padding: 8px 20px 5px 20px;
+    font-size: 12px;
+    color: #999;
+}
+
+div.api-group {
+    padding: 20px;
+}
+div.api-group>h1 {
+    color: #666;
+    background-color: #f0f6fa;
+    padding: 10px;
+}
+div.api-group>h1>i {
+    color: #fff;
+    margin-right: 10px;
+}
+div.api {
+    padding: 0px 20px;
+}
+div.api>h2 {
+    color: #999;
+    background-color: #dff0d8;
+    padding: 5px 10px;
+}
+div.api>h2>i {
+    color: #fff;
+    margin-right: 10px;
+}
+
+div.api span.url {
+    text-decoration: underline;
+    margin-left: 10px;
+    font-style: italic;
+}
+
+div.api>form label {
+    width: 120px;
+    display: inline-block;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+textarea {
+    -webkit-appearance: none !important;
+    color: #333;
+    border-color: #999;
+    outline: 0;
+    height: 16px;
+    padding: 6px 6px !important;
+    line-height: 16px;
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: #fff;
+    filter: none !important;
+    border: 1px solid #e5e5e5;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    background: transparent !important;
+}
+textarea {
+    height: auto;
+}
+select {
+    padding: 6px 6px !important;
+    background-color: #fff;
+    background-image: none !important;
+    filter: none !important;
+    border: 1px solid #e5e5e5;
+    outline: 0;
+    height: 30px !important;
+    line-height: 30px;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+button {
+    background-color: #e5e5e5;
+    background-image: none;
+    filter: none;
+    border: 0;
+    box-shadow: none;
+    padding: 7px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: 0;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+
+    color: #666 !important;
+    text-shadow: none;
+    box-shadow: none;
+    text-decoration: none;
+}
+button:hover {
+    background-position: 0 -15px;
+    -webkit-transition: background-position .1s linear;
+    -moz-transition: background-position .1s linear;
+    -o-transition: background-position .1s linear;
+    transition: background-position .1s linear;
+}
+
+.param-name {
+    display: inline-block;
+    padding-top: 5px;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+div.result-container div.result {
+    padding: 10px;
+    border: 1px solid #fff;
+    background-color: #fff;
+    margin: 10px 0px;
+    color: #333;
+}
+div.result-container div.result.result-success {
+    border: 1px solid #468847;
+    color: #468847;
+}
+div.result-container div.result.result-error {
+    border: 1px solid #b94a48;
+    color: #b94a48;
+}
+div.result-container div.result ul {
+    list-style: none;
+}

@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+Options +Indexes
+Options -Multiviews
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(healthchat/index\.php|css|user_guide|.+\.gif$|.+\.jpg$|.+\.png$|.+\.js$)
+RewriteRule ^(.*)$ healthchat/index.php/$1 [L]
+#RewriteCond $1 !^(index\.php|css|user_guide|.+\.gif$|.+\.jpg$|.+\.png$|.+\.js$)
+#RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+    # If we don't have mod_rewrite installed, all 404's
+    # can be sent to index.php, and everything works as normal.
+    # Submitted by: ElliotHaughin
+
+    ErrorDocument 404 /norewrite.php
+</IfModule>
