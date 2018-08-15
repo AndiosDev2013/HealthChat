@@ -1,0 +1,153 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="jiang.com.healthchat">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <!-- GCM -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.jmd.healthchat.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.jmd.healthchat.permission.C2D_MESSAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:name=".HealthChatApp"
+        android:icon="@drawable/ic_launcher"
+        android:keepScreenOn="true"
+        android:theme="@style/AppTheme"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activities.HomeActivity"
+            android:theme="@style/AppTheme_Fullscreen" />
+        <activity
+            android:name=".ui.activities.SignUpActivity"
+            android:theme="@style/AppTheme_Fullscreen" />
+        <activity
+            android:name=".ui.activities.RegistrationWithEmailActivity"
+            android:theme="@style/AppTheme_Fullscreen" />
+        <activity
+            android:name=".ui.activities.LoginWithEmailActivity"
+            android:theme="@style/AppTheme_Fullscreen" />
+        <activity
+            android:name=".ui.activities.HealthDiscussionDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.WritePostActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.CommentListActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.CommentEditActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.LikePersonListActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.ChangeProfileActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.ChangeHealthTopicActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.ProfileActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.MessageActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.ShowPictureActivity"
+            android:theme="@style/AppTheme" />
+
+        <!-- Heathchat Service & Receiver -->
+        <service android:name=".service.KeepLoginService" />
+
+        <!-- Facebook -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".ui.activities.LoginWithFacebookActivity"
+            android:theme="@style/TransTheme" />
+
+        <!-- Google -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ui.activities.LoginWithGoolgeActivity"
+            android:theme="@style/TransTheme" />
+
+        <!-- GCM -->
+        <receiver
+            android:name=".push.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.jmd.healthchat" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".push.GcmIntentService" />
+
+        <!-- Twitter -->
+        <activity
+            android:name=".ui.activities.LoginWithTwitterActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/TransTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="twitter-healthchat"
+                    android:scheme="oauth" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
